@@ -19,7 +19,7 @@ public class CategoryResource {
 		Category cat1 = new Category(1, "Conputing");
 		Category cat2 = new Category(2, "Office");
 		
-		//instantiating a category list
+		//instantiating a category list by List interface 
 		List<Category> list = new ArrayList<>();
 		list.add(cat1);
 		list.add(cat2);
