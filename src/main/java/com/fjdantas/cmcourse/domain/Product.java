@@ -12,23 +12,28 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity //jpa entity class
 public class Product implements Serializable{ //class conversion in byte sequence
 	//generating class version
 	private static final long serialVersionUID = 1L;
 	
 	//attributes of the class
-	//attributes of the class
 	@Id //auto id generation strategy definition with IDENTITY
 	@GeneratedValue(strategy=GenerationType.IDENTITY) 
 	private Integer id;
 	private String name;
-	private double price;
+	private Double price;
 	
 	/*
+	 * omitting the category list for products with annotation @JsonBackReference treating cyclic reference
 	 * creating the category list mapping and informing which _
-	 * table will create the relationship between the product and category tables
+	 * table will create the relationship between the product and category tables _
+	 * and passing the foreign keys of the related tables
 	 */
+	
+	@JsonBackReference
 	@ManyToMany
 	@JoinTable(name="PRODUCT_CATEGORY", 
 		joinColumns = @JoinColumn(name="product_id"), 

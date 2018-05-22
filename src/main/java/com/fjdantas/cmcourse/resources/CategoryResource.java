@@ -31,7 +31,7 @@ public class CategoryResource {
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
 	public ResponseEntity<?> find(@PathVariable Integer id) {  
-		Category obj = service.fetch(id); //accessing service by id
+		Category obj = service.find(id); //accessing service by id
 		//successful return operation and containing an object as the body of the response
 		return ResponseEntity.ok().body(obj);
 		

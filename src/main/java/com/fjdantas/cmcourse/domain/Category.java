@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity //jpa entity class
 public class Category implements Serializable{ //class conversion in byte sequence
 	//generating class version
@@ -21,7 +23,12 @@ public class Category implements Serializable{ //class conversion in byte sequen
 	private Integer id;
 	private String name;
 	
-	//creating the relationship many to many between the product and category tables with categories attribute
+	/*
+	 * treating cyclic reference with annotation @JsonManagedReference fetching the objects
+	 * creating the many-to-many relationship between the product and category tables _
+	 * using the mapping done in the categories attribute into Product class
+	 */
+	@JsonManagedReference
 	@ManyToMany(mappedBy="categories")
 	private List<Product> products = new ArrayList<>();
 	
