@@ -7,18 +7,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fjdantas.cmcourse.domain.Category;
-import com.fjdantas.cmcourse.services.CategoryService;
+import com.fjdantas.cmcourse.domain.Client;
+import com.fjdantas.cmcourse.services.ClientService;
 
 @RestController
-@RequestMapping(value="/categories")
-public class CategoryResource {
+@RequestMapping(value="/clients")
+public class ClientResource {
 	
 	/*
 	 * dependency for call operation of service access in the service layer with auto instance by Spring with the Autowired annotation
 	 */
 	@Autowired
-	private CategoryService service;
+	private ClientService service;
 	
 	/*
 	 * assigning http verbs getting a id by url
@@ -28,7 +28,7 @@ public class CategoryResource {
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
 	public ResponseEntity<?> find(@PathVariable Integer id) {  
-		Category obj = service.find(id); //accessing service by id
+		Client obj = service.find(id); //accessing service by id
 		//successful return operation and containing an object as the body of the response
 		return ResponseEntity.ok().body(obj);
 		

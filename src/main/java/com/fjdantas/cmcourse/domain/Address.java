@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class Address implements Serializable{ //class conversion in byte sequence
 	//generating class version
@@ -24,7 +26,11 @@ public class Address implements Serializable{ //class conversion in byte sequenc
 	private String nneighborhood;
 	private String zipCode;
 	
-	//association between Address and Client
+	/*
+	 * association between Address and Client when the objet Client can serialized your Addresses
+	 * not controller of the cyclic reference
+	 */
+	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name="client_id")
 	private Client client;
