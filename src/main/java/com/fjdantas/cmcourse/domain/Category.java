@@ -68,7 +68,7 @@ public class Category implements Serializable{ //class conversion in byte sequen
 		this.products = products;
 	}
 	
-	//methods hashcode for generate number code for each object
+	//method hashcode for generate number code for each object
 	@Override
 	public int hashCode() {
 		final int prime = 31;
